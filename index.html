@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dhiraj Singh</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    #calculator {
+      width: 200px;
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+    #result {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Dhiraj Singh</h1>
+  <div id="calculator">
+    <input type="number" id="num1" value="0" />
+    <input type="number" id="num2" value="0" />
+    <select id="operator">
+      <option value="+">+</option>
+      <option value="-">-</option>
+      <option value="*">*</option>
+      <option value="/">/</option>
+    </select>
+    <button id="calculate">=</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    const num1Input = document.getElementById('num1');
+    const num2Input = document.getElementById('num2');
+    const operatorSelect = document.getElementById('operator');
+    const calculateButton = document.getElementById('calculate');
+    const resultDiv = document.getElementById('result');
+
+    calculateButton.addEventListener('click', () => {
+      const num1 = parseFloat(num1Input.value);
+      const num2 = parseFloat(num2Input.value);
+      const operator = operatorSelect.value;
+
+      let result;
+      switch (operator) {
+        case '+':
+          result = num1 + num2;
+          break;
+        case '-':
+          result = num1 - num2;
+          break;
+        case '*':
+          result = num1 * num2;
+          break;
+        case '/':
+          if (num2 !== 0) {
+            result = num1 / num2;
+          } else {
+            result = 'Error! Division by zero is not allowed.';
+          }
+          break;
+        default:
+          result = 'Invalid operator.';
+      }
+
+      resultDiv.innerText = `Result: ${result}`;
+    });
+  </script>
+</body>
+</html>
